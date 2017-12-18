@@ -1,6 +1,6 @@
 <?php
 
-namespace Asabanovic\Events\Model;
+namespace Asabanovic\Surveys\Model;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -39,6 +39,6 @@ class SurveyContact extends Eloquent
      */
     public function survey()
     {
-    	return $this->hasOne('Asabanovic\Surveys\Model\Survey')
+    	return $this->hasOne('Asabanovic\Surveys\Model\Survey');
     }
 }

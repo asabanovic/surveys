@@ -1,6 +1,6 @@
 <?php
 
-namespace Asabanovic\Events\Model;
+namespace Asabanovic\Surveys\Model;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
