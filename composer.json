@@ -1,0 +1,34 @@
+{
+    "name": "asabanovic/surveys",
+    "description": "Laravel Package that helps you create, manage and delete Surveys (Questionnaires)",
+    "type": "library",
+    "minimum-stability": "dev",
+    "require-dev": {
+        "illuminate/database": "5.*",
+        "phpunit/phpunit": "5.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adnan Sabanovic",
+            "email": "adnanxteam@gmail.com"
+        }
+    ],
+    "autoload" : {
+      "psr-4": {
+        "Asabanovic\\Surveys\\": "src/"
+      }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asabanovic\\Surveys\\SurveyServiceProvider"
+            ]
+        }
+    }    
+}
