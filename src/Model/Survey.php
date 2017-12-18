@@ -23,6 +23,26 @@ class Survey extends Eloquent
     }
 
     /**
+     * Define a relationship between the survey and an aswer
+     * 
+     * @return Relation 
+     */
+    public function answers()
+    {
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyAnswers');
+    }
+
+    /**
+     * Define a relationship between the survey and a contact
+     * 
+     * @return Relation 
+     */
+    public function contacts()
+    {
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyContact');
+    }
+
+    /**
      * Retrieve the object who created the survey (Possibily a user)
      * 
      * @return Relation 

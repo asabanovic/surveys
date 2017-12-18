@@ -11,4 +11,24 @@ class SurveyDocument extends Eloquent
 	 * @var array
 	 */
     protected $guarded = ['id'];
+
+    /**
+     * Retrieve the object that wrote the question
+     * 
+     * @return Relation 
+     */
+    public function owner()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Define a relationship between the document and a survey
+     * 
+     * @return Relation 
+     */
+    public function survey()
+    {
+    	return $this->hasOne('Asabanovic\Surveys\Model\Survey');
+    }
 }
