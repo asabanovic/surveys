@@ -21,7 +21,7 @@ class CreateSurveyDocumentsTable extends Migration
             $table->integer('size')->nullable();
 
             // Survey this answer belongs to
-            $table->integer('survey_id')->unsigned()->index();
+            $table->integer('survey_id')->unsigned()->index()->nullable();
             $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
 
             // Who uploaded the document

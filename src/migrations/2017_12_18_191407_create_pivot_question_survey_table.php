@@ -17,11 +17,11 @@ class CreatePivotQuestionSurveyTable extends Migration
             $table->increments('id');
 
             // Survey this question belongs to
-            $table->integer('survey_id')->unsigned()->index();
+            $table->integer('survey_id')->unsigned()->index()->nullable();
             $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
 
             // Question that belongs to the survey
-            $table->integer('question_id')->unsigned()->index();
+            $table->integer('question_id')->unsigned()->index()->nullable();
             $table->foreign('question_id')->references('id')->on('survey_questions')->onDelete('cascade');
 
             $table->timestamps();

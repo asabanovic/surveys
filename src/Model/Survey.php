@@ -3,6 +3,9 @@
 namespace Asabanovic\Surveys\Model;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Asabanovic\Surveys\Model\SurveyQuestion;
+use Asabanovic\Surveys\Model\SurveyAnswer;
+use Asabanovic\Surveys\Model\SurveyDocument;
 
 class Survey extends Eloquent
 {
@@ -43,6 +46,16 @@ class Survey extends Eloquent
     }
 
     /**
+     * Define a relationship between the survey and a document
+     * 
+     * @return Relation 
+     */
+    public function documents()
+    {
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyDocument');
+    }
+
+    /**
      * Retrieve the object who created the survey (Possibily a user)
      * 
      * @return Relation 
@@ -50,5 +63,45 @@ class Survey extends Eloquent
     public function creator()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * Delete the survey from the database
+     * 
+     * @return Boolean 
+     */
+    public function delete()
+    {
+    	return $this->forceDelete();
+    }
+
+    /**
+     * Assign the question with this survey
+     * 
+     * @param SurveyQuestion $question 
+     */
+    public function addQuestion(SurveyQuestion $question)
+    {
+    	return $this->questions()->save($question);
+    }
+
+    /**
+     * Assign the answer with this survey
+     * 
+     * @param SurveyAnswer $answer 
+     */
+    public function addAnswer(SurveyAnswer $answer)
+    {
+    	return $this->answers()->save($answer);
+    }
+
+    /**
+     * Assign the document with this survey
+     * 
+     * @param SurveyDocument $document 
+     */
+    public function addDocument(SurveyDocument $document)
+    {
+    	return $this->documents()->save($document);
     }
 }

@@ -21,7 +21,7 @@ class CreateSurveyContactsTable extends Migration
             $table->integer('contact_id')->unsigned()->nullable();
 
             // Survey this contact belongs to
-            $table->integer('survey_id')->unsigned()->index();
+            $table->integer('survey_id')->unsigned()->index()->nullable();
             $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
 
             // Creator of the question

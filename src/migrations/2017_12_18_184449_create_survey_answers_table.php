@@ -16,16 +16,18 @@ class CreateSurveyAnswersTable extends Migration
         Schema::create('survey_answers', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->text('answer')->nullable();
+
             // Who answered the question
-            $table->string('owner_type')->nullable();
-            $table->integer('owner_id')->unsigned()->nullable();
+            $table->string('creator_type')->nullable();
+            $table->integer('creator_id')->unsigned()->nullable();
 
             // Survey this answer belongs to
-            $table->integer('survey_id')->unsigned()->index();
+            $table->integer('survey_id')->unsigned()->index()->nullable();
             $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
 
             // Question this answer belongs to
-            $table->integer('question_id')->unsigned()->index();
+            $table->integer('question_id')->unsigned()->index()->nullable();
             $table->foreign('question_id')->references('id')->on('survey_questions')->onDelete('cascade');
 
             $table->timestamps();
