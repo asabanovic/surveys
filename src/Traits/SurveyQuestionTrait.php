@@ -28,4 +28,5 @@ trait SurveyQuestionTrait
  	{
  		return $this->questions()->save($question);
  	}
+
 }

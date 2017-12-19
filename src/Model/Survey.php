@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use Asabanovic\Surveys\Model\SurveyQuestion;
 use Asabanovic\Surveys\Model\SurveyAnswer;
 use Asabanovic\Surveys\Model\SurveyDocument;
+use Asabanovic\Surveys\Model\SurveyContact;
 
 class Survey extends Eloquent
 {
@@ -66,16 +67,6 @@ class Survey extends Eloquent
     }
 
     /**
-     * Delete the survey from the database
-     * 
-     * @return Boolean 
-     */
-    public function delete()
-    {
-    	return $this->forceDelete();
-    }
-
-    /**
      * Assign the question with this survey
      * 
      * @param SurveyQuestion $question 
@@ -103,5 +94,15 @@ class Survey extends Eloquent
     public function addDocument(SurveyDocument $document)
     {
     	return $this->documents()->save($document);
+    }
+
+    /**
+     * Assign the contact with this survey
+     * 
+     * @param SurveyDocument $document 
+     */
+    public function addContact(SurveyContact $contact)
+    {
+    	return $this->contacts()->save($contact);
     }
 }

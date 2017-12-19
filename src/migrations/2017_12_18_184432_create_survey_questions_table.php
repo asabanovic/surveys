@@ -22,7 +22,7 @@ class CreateSurveyQuestionsTable extends Migration
             $table->integer('creator_id')->unsigned()->nullable();
 
             $table->string('type')->nullable();
-            $table->string('options')->nullable();
+            $table->text('options')->nullable();
 
             $table->tinyInteger('order')->nullable();
 
