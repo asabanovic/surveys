@@ -14,7 +14,7 @@ class Survey extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['title', 'description', 'creator_type', 'creator_id', 'updated_at', 'created_at'];
+    protected $fillable = ['uuid', 'title', 'description', 'creator_type', 'creator_id', 'updated_at', 'created_at'];
 
     /**
      * Retrieve all questions for this survey
@@ -23,7 +23,7 @@ class Survey extends Eloquent
      */
     public function questions()
     {
-    	return $this->belongsToMany('Asabanovic\Surveys\Model\SurveyQuestion', 'question_survey', 'survey_id', 'question_id');
+    	return $this->belongsToMany('Asabanovic\Surveys\Model\SurveyQuestion', 'question_survey', 'survey_id', 'question_id')->withPivot('id');
     }
 
     /**
