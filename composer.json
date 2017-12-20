@@ -32,6 +32,6 @@
         }
     },
     "require": {
-        "nicolaslopezj/searchable": "dev-master"
+        "nicolaslopezj/searchable": "^1.9"
     }
 }
