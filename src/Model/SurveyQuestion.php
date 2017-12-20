@@ -3,15 +3,39 @@
 namespace Asabanovic\Surveys\Model;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Asabanovic\Surveys\Model\SurveyAnswer;
 
 class SurveyQuestion extends Eloquent
 {
+
+	use SearchableTrait;
+
+	/**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'survey_questions.question' => 10,
+        ],
+       
+    ];
+
+
     /**
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $guarded = ['id'];
+    protected $fillable = ['question', 'creator_type', 'creator_id', 'type', 'options', 'order', 'updated_at', 'created_at'];
 
     /**
      * Retrieve the object that created the question
@@ -30,7 +54,7 @@ class SurveyQuestion extends Eloquent
      */
     public function answers()
     {
-    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyAnswer');
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyAnswer', 'question_id');
     }
 
     /**

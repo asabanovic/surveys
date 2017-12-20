@@ -30,5 +30,8 @@
                 "Asabanovic\\Surveys\\SurveyServiceProvider"
             ]
         }
-    }    
+    },
+    "require": {
+        "nicolaslopezj/searchable": "dev-master"
+    }
 }
