@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class SurveyContact extends Eloquent
 {
+	/*
+	THESE CONTACTS ARE NOT REAL ROUNDTABLE USERS. THEY ARE JUST STATIC INFORMATION AND WILL BE STORED SEPARATELY
+	 */
+	
     /**
 	 * Allow all fields to be mass-assigned
 	 * @var array

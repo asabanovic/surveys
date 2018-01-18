@@ -23,6 +23,19 @@ trait SurveyTrait
 	}
 
 	/**
+     * Get all of the survey pivots for this survey 
+     */
+    public function surveyPivot()
+    {
+        return $this->morphMany('Asabanovic\Surveys\Model\SurveyUser', 'user');
+    }
+
+    public function mySurveys()
+    {
+    	return $this->surveyPivot->pluck('survey');
+    }
+
+	/**
 	 * Associate the object with this survey and recognize it as the owner
 	 * 
 	 * @param  Survey $survey 

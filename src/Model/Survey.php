@@ -67,6 +67,26 @@ class Survey extends Eloquent
     }
 
     /**
+     * Retrieve all user pivots that are able to participate in the survey
+     * 
+     * @return Relation 
+     */
+    public function usersList()
+    {
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyUser', 'survey_id')->with('user');
+    }
+
+    /**
+     * Filter out the pivot table and return all the users that can open the survey
+     * 
+     * @return Collection
+     */
+    public function users()
+    {
+    	return $this->usersList->pluck('user');
+    }
+
+    /**
      * Assign the question with this survey
      * 
      * @param SurveyQuestion $question 
