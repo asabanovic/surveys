@@ -23,6 +23,9 @@ class CreateSurveysTable extends Migration
             $table->string('creator_type')->nullable();
             $table->integer('creator_id')->unsigned()->nullable();
 
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
+
             $table->timestamps();
         });
     }

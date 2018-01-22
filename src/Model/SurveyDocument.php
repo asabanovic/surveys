@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class SurveyDocument extends Eloquent
 {
+	/*
+	WE WILL REFACTOR THIS (MAYBE EVEN REMOVE) BECAUSE SURVEY DOCUMENTS WILL FIT INTO APPLICATION ATTACHMENTS
+	THEY WILL JUST NEED TO SET A SURVEY-FLAG
+	 */
+	
     /**
 	 * Allow all fields to be mass-assigned
 	 * @var array
