@@ -140,4 +140,17 @@ class Survey extends Eloquent
     {
     	return $this->contacts()->save($contact);
     }
+
+    /**
+     * Add a participant to this survey
+     * 
+     * @param Eloquent $participant 
+     */
+    public function addParticipant(Eloquent $participant)
+    {
+    	return $this->usersList()->create([
+    		'user_id' => $participant->id,
+            'user_type' => get_class($participant)
+    	]);
+    }
 }

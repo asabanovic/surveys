@@ -30,6 +30,11 @@ trait SurveyTrait
         return $this->morphMany('Asabanovic\Surveys\Model\SurveyUser', 'user');
     }
 
+    /**
+     * Format the proper output
+     * 
+     * @return Collection 
+     */
     public function mySurveys()
     {
     	return $this->surveyPivot->pluck('survey');

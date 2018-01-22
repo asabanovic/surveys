@@ -12,6 +12,8 @@ class SurveyUser extends Eloquent
 	 */
     protected $fillable = ['survey_id', 'user_id', 'user_type'];
 
+    public $timestamps = false;
+
     /**
      * Get all of the owning user models.
      */
