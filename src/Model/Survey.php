@@ -14,7 +14,7 @@ class Survey extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['uuid', 'title', 'description', 'creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
+    protected $fillable = ['uuid', 'title', 'description', 'support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
 
     /**
      * Retrieve all questions for this survey
@@ -150,7 +150,24 @@ class Survey extends Eloquent
     {
     	return $this->usersList()->create([
     		'user_id' => $participant->id,
-            'user_type' => get_class($participant)
+            'user_type' => get_class($participant),
+            'completed' => 0
     	]);
+    }
+
+    /**
+     * Remove a participant from this survey
+     * 
+     * @param Eloquent $participant 
+     */
+    public function removeParticipant(Eloquent $participant)
+    {
+    	$survey_relation = $this->usersList->where('user_id', $participant->id)->first();
+
+    	if ($survey_relation) {
+    		return $survey_relation->delete();
+    	}
+
+    	return false;
     }
 }

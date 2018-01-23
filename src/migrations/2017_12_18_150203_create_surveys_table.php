@@ -18,6 +18,9 @@ class CreateSurveysTable extends Migration
             $table->uuid('uuid')->nullable();
             $table->string('title');
             $table->text('description');
+
+            $table->text('privacy')->nullable();
+            $table->text('support')->nullable();
             
             // Creator of the survey
             $table->string('creator_type')->nullable();

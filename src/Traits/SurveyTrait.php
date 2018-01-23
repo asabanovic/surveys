@@ -40,6 +40,34 @@ trait SurveyTrait
     	return $this->surveyPivot->pluck('survey');
     }
 
+    /**
+     * User completes the survey
+     * 
+     * @param  Survey $survey 
+     * @return boolean         
+     */
+    public function completeSurvey(Survey $survey)
+    {
+    	$survey_relation = $this->surveyPivot->where('survey_id', $survey->id)->first();
+    	$survey_relation->completed = true;
+
+    	return $survey_relation;
+    }
+
+    /**
+     * User resets the survey
+     * 
+     * @param  Survey $survey 
+     * @return boolean         
+     */
+    public function resetSurvey(Survey $survey)
+    {
+    	$survey_relation = $this->surveyPivot->where('survey_id', $survey->id)->first();
+    	$survey_relation->completed = false;
+
+    	return $survey_relation;
+    }
+
 	/**
 	 * Associate the object with this survey and recognize it as the owner
 	 * 
