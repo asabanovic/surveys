@@ -77,8 +77,12 @@ trait SurveyTrait
     public function completeSurvey(Survey $survey)
     {
     	$survey_relation = $this->surveyPivot->where('survey_id', $survey->id)->first();
-    	$survey_relation->completed = true;
-
+    	
+    	if ($survey_relation) {
+    		$survey_relation->completed = true;
+    		$survey_relation->save();
+    	}
+    	
     	return $survey_relation;
     }
 
@@ -91,7 +95,11 @@ trait SurveyTrait
     public function resetSurvey(Survey $survey)
     {
     	$survey_relation = $this->surveyPivot->where('survey_id', $survey->id)->first();
-    	$survey_relation->completed = false;
+
+    	if ($survey_relation) {
+    		$survey_relation->completed = false;
+    		$survey_relation->save();
+    	}
 
     	return $survey_relation;
     }

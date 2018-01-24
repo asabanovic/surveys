@@ -86,6 +86,26 @@ class Survey extends Eloquent
     	return $this->usersList->pluck('user');
     }
 
+     /**
+     * Filter out the pivot table and return all the users that haven't completed the survey
+     * 
+     * @return Collection
+     */
+    public function usersNotCompleted()
+    {
+    	return $this->usersList->where('completed', 0)->pluck('user');
+    }
+
+    /**
+     * Filter out the pivot table and return all the users that have completed the survey
+     * 
+     * @return Collection
+     */
+    public function usersCompleted()
+    {
+    	return $this->usersList->where('completed', 1)->pluck('user');
+    }
+
     /**
      * Assign the question with this survey
      * 
