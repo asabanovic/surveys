@@ -23,7 +23,7 @@ class Survey extends Eloquent
      */
     public function questions()
     {
-    	return $this->belongsToMany('Asabanovic\Surveys\Model\SurveyQuestion', 'question_survey', 'survey_id', 'question_id')->withPivot('id');
+    	return $this->belongsToMany('Asabanovic\Surveys\Model\SurveyQuestion', 'question_survey', 'survey_id', 'question_id')->orderBy('pivot_id', 'asc')->withPivot('id');
     }
 
     /**

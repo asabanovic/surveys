@@ -16,6 +16,7 @@ class CreateSurveyQuestionsTable extends Migration
         Schema::create('survey_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question')->nullable();
+            $table->string('header')->nullable();
             
             // Creator of the question
             $table->string('creator_type')->nullable();

@@ -25,7 +25,7 @@ class CreatePivotQuestionSurveyTable extends Migration
             $table->foreign('question_id')->references('id')->on('survey_questions')->onDelete('cascade');
 
             $table->unique(['question_id', 'survey_id']);
-            $table->timestamps();
+
         });
     }
 
