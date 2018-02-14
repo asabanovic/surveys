@@ -177,8 +177,8 @@ class Survey extends Eloquent
      * @param Eloquent $participant 
      * @param Eloquent $organization 
      */
-    public function addParticipant(Eloquent $participant, Eloquent $organization = NULL)
-    {
+    public function addParticipant(Eloquent $participant, Eloquent $organization)
+    {	
     	return $this->usersList()->create([
     		'user_id' => $participant->id,
             'user_type' => get_class($participant),

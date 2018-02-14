@@ -10,7 +10,7 @@ class SurveyUser extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['survey_id', 'user_id', 'user_type', 'organizationp_id', 'organizationp_type', 'completed'];
+    protected $fillable = ['survey_id', 'user_id', 'user_type', 'organization_id', 'organization_type', 'completed'];
 
     public $timestamps = false;
 
