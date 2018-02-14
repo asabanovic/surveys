@@ -23,11 +23,19 @@ trait SurveyTrait
 	}
 
 	/**
-     * Get all of the survey pivots for this survey 
+     * Get all of the survey pivots for this survey by user who completed
      */
     public function surveyPivot()
     {
         return $this->morphMany('Asabanovic\Surveys\Model\SurveyUser', 'user');
+    }
+
+    /**
+     * Get all of the survey pivots for this survey by organization (Optional)
+     */
+    public function organizationPivot()
+    {
+        return $this->morphMany('Asabanovic\Surveys\Model\SurveyUser', 'organization');
     }
 
     /**
