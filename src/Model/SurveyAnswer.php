@@ -3,6 +3,7 @@
 namespace Asabanovic\Surveys\Model;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use App\Roundtables\Helper;
 
 class SurveyAnswer extends Eloquent
 {
@@ -40,5 +41,10 @@ class SurveyAnswer extends Eloquent
     public function question()
     {
     	return $this->hasOne('Asabanovic\Surveys\Model\SurveyQuestion');
+    }
+
+    public function getAnswerAttribute($value)
+    {
+        return Helper::isJson($value) ? json_decode($value) : $value;
     }
 }
