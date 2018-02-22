@@ -75,6 +75,24 @@ trait SurveyTrait
     {
     	return $this->surveyPivot->pluck('survey');
     }
+
+    /**
+     * Check if I this user has been invited to this specific survey
+     * 
+     * @param  Survey  $survey 
+     * @return Boolean         
+     */
+    public function hasBeenInvitedToSurvey(Survey $survey)
+    {
+
+    	foreach ($this->mySurveys() as $key => $invited_survey) {
+    		if ($invited_survey->id == $survey->id) {
+    			return true;
+    		}
+    	}
+
+    	return false;
+    }
  
     /**
      * User completes the survey
