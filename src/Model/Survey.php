@@ -10,11 +10,15 @@ use Asabanovic\Surveys\Model\SurveyContact;
 
 class Survey extends Eloquent
 {
+    protected $casts = [
+        'data' => 'array', // Data will be converted to array
+    ];
+
     /**
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['uuid', 'title', 'description', 'support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
+    protected $fillable = ['uuid', 'title', 'description', 'data','support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
 
     /**
      * Retrieve all questions for this survey
