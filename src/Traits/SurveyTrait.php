@@ -23,11 +23,19 @@ trait SurveyTrait
 	}
 
 	/**
-     * Get all of the survey pivots for this survey 
+     * Get all of the survey pivots for this survey by user who completed
      */
     public function surveyPivot()
     {
         return $this->morphMany('Asabanovic\Surveys\Model\SurveyUser', 'user');
+    }
+
+    /**
+     * Get all of the survey pivots for this survey by organization (Optional)
+     */
+    public function organizationPivot()
+    {
+        return $this->morphMany('Asabanovic\Surveys\Model\SurveyUser', 'organization');
     }
 
     /**
@@ -66,6 +74,24 @@ trait SurveyTrait
     public function mySurveys()
     {
     	return $this->surveyPivot->pluck('survey');
+    }
+
+    /**
+     * Check if I this user has been invited to this specific survey
+     * 
+     * @param  Survey  $survey 
+     * @return Boolean         
+     */
+    public function hasBeenInvitedToSurvey(Survey $survey)
+    {
+
+    	foreach ($this->mySurveys() as $key => $invited_survey) {
+    		if ($invited_survey->id == $survey->id) {
+    			return true;
+    		}
+    	}
+
+    	return false;
     }
  
     /**

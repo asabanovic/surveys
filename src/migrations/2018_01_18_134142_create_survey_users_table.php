@@ -20,9 +20,13 @@ class CreateSurveyUsersTable extends Migration
 
             $table->boolean('completed')->nullable();
 
-            $table->morphs('user');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('user_type')->nullable();
+            
+            $table->integer('organization_id')->unsigned()->nullable();
+            $table->string('organization_type')->nullable();
 
-            $table->unique(['survey_id', 'user_id']);
+            $table->unique(['survey_id', 'user_id', 'organization_id']);
         });
     }
 

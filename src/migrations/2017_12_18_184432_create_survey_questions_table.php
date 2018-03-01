@@ -24,6 +24,7 @@ class CreateSurveyQuestionsTable extends Migration
 
             $table->string('type')->nullable();
             $table->text('options')->nullable();
+            $table->boolean('required')->nullable();
 
             // Store organization/user information reference to populate
             $table->text('reference')->nullable();

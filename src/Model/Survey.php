@@ -10,11 +10,15 @@ use Asabanovic\Surveys\Model\SurveyContact;
 
 class Survey extends Eloquent
 {
+    protected $casts = [
+        'data' => 'array', // Data will be converted to array
+    ];
+
     /**
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['uuid', 'title', 'description', 'support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
+    protected $fillable = ['uuid', 'title', 'description', 'data','support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
 
     /**
      * Retrieve all questions for this survey
@@ -73,7 +77,17 @@ class Survey extends Eloquent
      */
     public function usersList()
     {
-    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyUser', 'survey_id')->with('user');
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyUser', 'survey_id')->with('user', 'organization');
+    }
+
+    /**
+     * Retrieve all organization pivots that are able to participate in the survey
+     * 
+     * @return Relation 
+     */
+    public function organizationsList()
+    {
+    	return $this->hasMany('Asabanovic\Surveys\Model\SurveyUser', 'survey_id')->with('user', 'organization');
     }
 
     /**
@@ -165,15 +179,20 @@ class Survey extends Eloquent
      * Add a participant to this survey
      * 
      * @param Eloquent $participant 
+     * @param Eloquent $organization 
      */
-    public function addParticipant(Eloquent $participant)
-    {
+    public function addParticipant(Eloquent $participant, Eloquent $organization)
+    {	
     	return $this->usersList()->create([
     		'user_id' => $participant->id,
             'user_type' => get_class($participant),
+            'organization_id' => $organization ? $organization->id : NULL,
+            'organization_type' => $organization ? get_class($organization) : NULL,
             'completed' => 0
     	]);
     }
+
+
 
     /**
      * Remove a participant from this survey

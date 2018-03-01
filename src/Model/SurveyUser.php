@@ -10,7 +10,7 @@ class SurveyUser extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['survey_id', 'user_id', 'user_type', 'completed'];
+    protected $fillable = ['survey_id', 'user_id', 'user_type', 'organization_id', 'organization_type', 'completed'];
 
     public $timestamps = false;
 
@@ -18,6 +18,14 @@ class SurveyUser extends Eloquent
      * Get all of the owning user models.
      */
     public function user()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Get all of the owning organization models.
+     */
+    public function organization()
     {
         return $this->morphTo();
     }
