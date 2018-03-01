@@ -35,7 +35,7 @@ class SurveyQuestion extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['question', 'header', 'reference', 'required', 'creator_type', 'creator_id', 'type', 'options', 'order', 'updated_at', 'created_at'];
+    protected $fillable = ['question', 'header', 'reference', 'required', 'creator_type', 'creator_id', 'type', 'options', 'order', 'updated_at', 'created_at' ];
 
     /**
      * Retrieve the object that created the question
