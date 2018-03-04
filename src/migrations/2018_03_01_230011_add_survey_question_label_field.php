@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateSurveyData extends Migration
+class AddSurveyQuestionLabelField extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateSurveyData extends Migration
      */
     public function up()
     {
-        Schema::table('surveys', function (Blueprint $table) {
-           $table->text('data')->after('description');
+        Schema::table('survey_questions', function (Blueprint $table) {
+            $table->string('label')->nullable(); 
         });
     }
 
@@ -25,8 +25,8 @@ class UpdateSurveyData extends Migration
      */
     public function down()
     {
-       Schema::table('surveys', function($table) {
-            $table->dropColumn('data');
+        Schema::table('survey_questions', function($table) {
+            $table->dropColumn('label');
         });
     }
 }

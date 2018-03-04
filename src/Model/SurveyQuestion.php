@@ -26,6 +26,7 @@ class SurveyQuestion extends Eloquent
          */
         'columns' => [
             'survey_questions.question' => 10,
+            'survey_questions.label' => 9
         ],
        
     ];
@@ -35,7 +36,29 @@ class SurveyQuestion extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['question', 'header', 'reference', 'required', 'creator_type', 'creator_id', 'type', 'options', 'order', 'updated_at', 'created_at' ];
+    protected $fillable = [
+        'question', 
+        'header', 
+        'reference', 
+        'required', 
+        'creator_type', 
+        'creator_id', 
+        'type', 
+        'options', 
+        'order', 
+        'updated_at', 
+        'created_at', 
+        'label',
+        'condition',
+        'data',
+        'children'
+    ];
+
+    protected $casts = [
+        'data' => 'array',
+        'condition' => 'object',
+        'children' => 'array'
+    ];
 
     /**
      * Retrieve the object that created the question
