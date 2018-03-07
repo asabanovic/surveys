@@ -53,7 +53,8 @@ class SurveyQuestion extends Eloquent
         'data',
         'children',
         'placeholder',
-        'description'
+        'description',
+        'width'
     ];
 
     protected $casts = [
