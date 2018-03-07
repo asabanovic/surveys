@@ -51,7 +51,9 @@ class SurveyQuestion extends Eloquent
         'label',
         'condition',
         'data',
-        'children'
+        'children',
+        'placeholder',
+        'description'
     ];
 
     protected $casts = [
