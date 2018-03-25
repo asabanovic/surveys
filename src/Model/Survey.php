@@ -18,7 +18,7 @@ class Survey extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['uuid', 'title', 'description', 'data','support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
+    protected $fillable = ['id','uuid', 'title', 'description', 'data','support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
 
     /**
      * Retrieve all questions for this survey
@@ -192,8 +192,6 @@ class Survey extends Eloquent
     	]);
     }
 
-
-
     /**
      * Remove a participant from this survey
      * 
@@ -209,4 +207,5 @@ class Survey extends Eloquent
 
     	return false;
     }
+
 }
