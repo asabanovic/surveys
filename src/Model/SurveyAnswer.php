@@ -18,7 +18,7 @@ class SurveyAnswer extends Eloquent
      * 
      * @return Relation 
      */
-    public function owner()
+    public function creator()
     {
         return $this->morphTo();
     }
