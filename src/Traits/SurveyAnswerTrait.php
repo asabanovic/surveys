@@ -19,6 +19,16 @@ trait SurveyAnswerTrait
 	}
 
 	/**
+	 * Retrieve all answers created by this user
+	 * 
+	 * @return Relation 
+	 */
+	public function groupAnswers()
+	{
+		return $this->morphMany('Asabanovic\Surveys\Model\SurveyAnswer', 'group');
+	}
+
+	/**
 	 * Associate the object with this answer and recognize it as the owner
 	 * 
 	 * @param  SurveyAnswer $answer 
@@ -28,4 +38,5 @@ trait SurveyAnswerTrait
  	{
  		return $this->answers()->save($answer);
  	}
+
 }

@@ -47,4 +47,12 @@ class SurveyAnswer extends Eloquent
     {
         return Helper::isJson($value) ? json_decode($value) : $value;
     }
+
+    public function setGroup(Eloquent $group)
+    {
+        return $this->fill([
+            'group_id' => $group ? $group->id : NULL,
+            'group_type' => $group ? get_class($group) : NULL,
+        ])->save();
+    }
 }

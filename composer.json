@@ -32,6 +32,7 @@
         }
     },
     "require": {
-        "nicolaslopezj/searchable": "^1.9"
+        "nicolaslopezj/searchable": "^1.9",
+        "nesbot/carbon": "~1.18"
     }
 }

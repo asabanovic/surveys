@@ -14,7 +14,7 @@ class UpdateSurveyData extends Migration
     public function up()
     {
         Schema::table('surveys', function (Blueprint $table) {
-           $table->text('data')->after('description');
+           $table->text('data')->nullable()->after('description');
         });
     }
 

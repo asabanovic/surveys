@@ -7,11 +7,16 @@ use Asabanovic\Surveys\Model\SurveyQuestion;
 use Asabanovic\Surveys\Model\SurveyAnswer;
 use Asabanovic\Surveys\Model\SurveyDocument;
 use Asabanovic\Surveys\Model\SurveyContact;
+use Carbon\Carbon;
 
 class Survey extends Eloquent
 {
     protected $casts = [
         'data' => 'array', // Data will be converted to array
+    ];
+
+    protected $appends = [
+        'active'
     ];
 
     /**
@@ -206,6 +211,13 @@ class Survey extends Eloquent
     	}
 
     	return false;
+    }
+
+    public function getActiveAttribute()
+    {
+        $dt = Carbon::parse($this->end);
+
+        return !$dt->isPast();
     }
 
 }
