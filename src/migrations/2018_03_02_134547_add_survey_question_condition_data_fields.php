@@ -27,10 +27,10 @@ class AddSurveyQuestionConditionDataFields extends Migration
      */
     public function down()
     {
-        Schema::table('survey_questions', function($table) {
-            $table->dropColumn('condition');
-            $table->dropColumn('data');
-            $table->dropColumn('children');
-        });
+        // Schema::table('survey_questions', function($table) {
+        //     $table->dropColumn('condition');
+        //     $table->dropColumn('data');
+        //     $table->dropColumn('children');
+        // });
     }
 }

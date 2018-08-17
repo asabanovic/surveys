@@ -27,9 +27,11 @@ class UpdateSurveyAnswersTableGroupMorph extends Migration
      */
     public function down()
     {
-        Schema::table('survey_answers', function (Blueprint $table) {
-            $table->dropColumn('group_id');
-            $table->dropColumn('group_type');
-        });
+        // if (Schema::hasColumn('survey_answers', 'group_id')) {
+        //     Schema::table('survey_answers', function (Blueprint $table) {
+        //         $table->dropColumn('group_id');
+        //         $table->dropColumn('group_type');
+        //     });
+        // }
     }
 }

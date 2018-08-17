@@ -54,7 +54,8 @@ class SurveyQuestion extends Eloquent
         'children',
         'placeholder',
         'description',
-        'width'
+        'width',
+        'related_question_id'
     ];
 
     protected $casts = [
@@ -81,6 +82,11 @@ class SurveyQuestion extends Eloquent
     public function answers()
     {
     	return $this->hasMany('Asabanovic\Surveys\Model\SurveyAnswer', 'question_id');
+    }
+
+    public function related_question()
+    {
+        return $this->belongsTo('Asabanovic\Surveys\Model\SurveyQuestion', 'related_question_id')->with('answers');
     }
 
     /**

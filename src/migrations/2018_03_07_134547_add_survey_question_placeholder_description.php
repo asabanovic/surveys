@@ -26,9 +26,11 @@ class AddSurveyQuestionPlaceholderDescription extends Migration
      */
     public function down()
     {
-        Schema::table('survey_questions', function(Blueprint $table) {
-            $table->dropColumn('description');
-            $table->dropColumn('placeholder');
-        });
+        // if (Schema::hasColumn('survey_questions', 'description')) { 
+        //     Schema::table('survey_questions', function(Blueprint $table) {
+        //         $table->dropColumn('description');
+        //         $table->dropColumn('placeholder');
+        //     });
+        // }
     }
 }
