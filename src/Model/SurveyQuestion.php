@@ -55,13 +55,12 @@ class SurveyQuestion extends Eloquent
         'placeholder',
         'description',
         'width',
-        'related_question_id'
     ];
 
     protected $casts = [
         'data' => 'array',
         'condition' => 'object',
-        'children' => 'array'
+        'children' => 'array',
     ];
 
     /**
