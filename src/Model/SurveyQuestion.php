@@ -57,6 +57,9 @@ class SurveyQuestion extends Eloquent
         'width',
     ];
 
+    /**
+     * Cast different values into proper data types
+     */
     protected $casts = [
         'data' => 'array',
         'condition' => 'object',
