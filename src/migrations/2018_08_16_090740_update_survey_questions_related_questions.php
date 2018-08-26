@@ -26,9 +26,11 @@ class UpdateSurveyQuestionsRelatedQuestions extends Migration
      */
     public function down()
     {
-        Schema::table('survey_questions', function (Blueprint $table) {
-            $table->dropForeign(['related_question_id']);
-            $table->dropColumn('related_question_id');
-        });
+        if (Config::get('database.default') === 'mysql') {
+            Schema::table('survey_questions', function (Blueprint $table) {
+                $table->dropForeign(['related_question_id']);
+                $table->dropColumn('related_question_id');
+            });
+        }
     }
 }
