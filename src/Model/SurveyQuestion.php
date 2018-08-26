@@ -60,7 +60,7 @@ class SurveyQuestion extends Eloquent
     protected $casts = [
         'data' => 'array',
         'condition' => 'object',
-        'children' => 'array',
+        'children' => 'array'
     ];
 
     /**
