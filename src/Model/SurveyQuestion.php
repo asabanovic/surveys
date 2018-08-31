@@ -55,6 +55,7 @@ class SurveyQuestion extends Eloquent
         'placeholder',
         'description',
         'width',
+        'pdf_description'
     ];
 
     /**
