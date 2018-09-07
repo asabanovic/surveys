@@ -217,7 +217,7 @@ class Survey extends Eloquent
     {
         $dt = Carbon::parse($this->end);
 
-        return !$dt->isPast();
+        return !$dt->addDay()->isPast();
     }
 
 }
