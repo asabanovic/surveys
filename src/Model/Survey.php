@@ -23,7 +23,7 @@ class Survey extends Eloquent
 	 * Allow all fields to be mass-assigned
 	 * @var array
 	 */
-    protected $fillable = ['id','uuid', 'title', 'description', 'data','support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end'];
+    protected $fillable = ['id','uuid', 'title', 'description', 'data','support', 'privacy','creator_type', 'creator_id', 'updated_at', 'created_at', 'start', 'end', 'due'];
 
     /**
      * Retrieve all questions for this survey
